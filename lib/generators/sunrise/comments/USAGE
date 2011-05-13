@@ -1,0 +1,11 @@
+Usage:
+  rails generate sunrise:comments:install [options]
+
+Options:
+  [--migrations]  # Indicates when to generate migrations
+                  # Default: true
+                 
+Example:
+  rails g sunrise:comments:install
+  
+  rails g sunrise:comments:install --skip-migrations

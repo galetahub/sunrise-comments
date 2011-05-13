@@ -1,0 +1,33 @@
+<%= content_tag(:div, :id => dom_id(model, :form), :class => "block") do %>
+  <% if user_signed_in? %>
+	  <%= record_asset_tag(current_user, :avatar, "avatar_default.jpg", :type => :preview, :class => "autor-pic") %>
+	  
+	  <span class="cover"></span>
+	  <div class="coment-area">
+		  <div class="comment-cont">
+			  <strong class="autor"><%= current_user.name %></strong>
+			  
+			  <div class="txtarea">
+          <noscript><p><%= t('sunrise.comments.noscript') %></p></noscript>
+          <%= form_for comment, :as => :comment, :remote => true do |f| %>
+            <%= f.hidden_field :commentable_type %>
+            <%= f.hidden_field :commentable_id %>
+            
+            <%= f.text_area :content, :title => t('sunrise.comments.tooltip'), 
+              :"data-disable-with" => t('sunrise.comments.loading') %>
+            
+            <div class="ok">
+					    <%= f.submit t('sunrise.comments.create'), :type => "image", :src => "/images/but_public.png", 
+					      :"data-disable-with" => t('sunrise.comments.loading'), :class => "but" %>
+				    </div>
+          <% end %>
+        </div>
+		  </div>
+	  </div>
+	<% else %>
+	  <div class="comments-notice">
+      <%= t('sunrise.comments.notice') %>, <%= link_to 'войдите', new_user_session_path(:ref => request.path) %> 
+      или <%= link_to 'зарегистрируйтесь', new_user_path(:ref => request.path) %>.
+    </div>
+	<% end %>
+<% end %>

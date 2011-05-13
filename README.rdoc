@@ -1,0 +1,21 @@
+= Sunrise Comments
+
+== Install
+
+  rails generate sunrise:comments:install
+  
+In generated migration add "comments_count" column for counter cache:
+
+  add_column :posts, :comments_count, :integer, :default => 0
+  
+  rake db:migrate
+
+== Usage
+
+  class Post < ActiveRecord::Base
+    include Sunrise::Comments::Base
+  end
+  
+  class User < ActiveRecord::Base
+    include Sunrise::Comments::Author
+  end

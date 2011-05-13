@@ -1,0 +1,8 @@
+<% model = @comment.commentable %>
+<% if @comment.errors.empty? %>
+  //$('#<%= dom_id(model, :block) %>').replaceWith("<%= escape_javascript(render(:partial => "block", :locals => { :model => model })) %>");
+  $('#<%= dom_id(model, :comments) %>').prepend("<%= escape_javascript(render(:partial => 'comment', :object => @comment)) %>");
+  $('#<%= dom_id(model, :form) %>').replaceWith("<%= escape_javascript(render(:partial=>"form", :locals=>{ :comment => model.comments.new, :model => model })) %>");
+<% else %>
+  $('#<%= dom_id(model, :form) %>').replaceWith("<%= escape_javascript(render(:partial=>"form", :locals=>{ :comment => @comment, :model => model })) %>");
+<% end %>

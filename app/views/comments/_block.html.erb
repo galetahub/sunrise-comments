@@ -1,0 +1,10 @@
+<%= content_tag(:div, :id => dom_id(model, :block), :class => "comment-block") do %>
+	<h3><img src="/images/coment_title.png" alt="коментарi" /></h3>
+	<div class="comment-container">
+	  <%= render :partial => 'comments/form', :locals => { :comment => model.comments.new, :model => model } %>
+		
+		<%= content_tag(:div, :id => dom_id(model, :comments)) do %>
+		  <%= render :partial => 'comments/comment', :collection => model.comments %>
+		<% end %>
+	</div>
+<% end %>

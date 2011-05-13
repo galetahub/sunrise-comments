@@ -1,0 +1,13 @@
+<div class="block">
+  <%= record_asset_tag(comment.author, :avatar, "avatar_default.jpg", :type => :preview, :class => "autor-pic") %>
+  <span class="cover"></span>
+	
+	<div class="coment-area">
+		<div class="comment-cont">
+			<strong class="autor"><%= comment.author.name %></strong>
+			<div class="txt">
+				<%=raw comment.content_html %>
+			</div>
+		</div>
+	</div>
+</div>
