@@ -4,7 +4,7 @@ require 'sunrise-comments'
 module Sunrise
   module Comments
     class Engine < ::Rails::Engine
-      config.after_initialize do
+      config.before_initialize do
         Sunrise::Plugin.register :comments do |plugin|
           plugin.model = 'sunrise/models/comment'
           plugin.menu = false
