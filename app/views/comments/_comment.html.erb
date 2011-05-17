@@ -1,4 +1,4 @@
-<div class="block">
+<%= content_tag(:div, :id => dom_id(comment), :class => "block") do %>
   <%= record_asset_tag(comment.author, :avatar, "avatar_default.jpg", :type => :preview, :class => "autor-pic") %>
   <span class="cover"></span>
 	
@@ -8,6 +8,11 @@
 			<div class="txt">
 				<%=raw comment.content_html %>
 			</div>
+			
+			<% if can? :delete, comment %>
+	      <%= link_to 'видалити', comment_path(comment), :remote => true, 
+	        :method => :delete, :class => 'destroy', :confirm => t('sunrise.comments.destroy_confirm') %>
+	    <% end %>
 		</div>
 	</div>
-</div>
+<% end %>
