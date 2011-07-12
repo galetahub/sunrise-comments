@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :find_author
+  before_filter :build_comment, :only => [:new, :create]
   before_filter :find_comment, :only => [:edit, :update, :destroy]
   
   authorize_resource
@@ -9,16 +10,11 @@ class CommentsController < ApplicationController
   cache_sweeper :comment_sweeper, :only => [:create, :update, :destroy]
   
   def new
-    @comment = Comment.new
-    @comment.author = @author
     respond_with(@comment)
   end
   
   def create
-    @comment = Comment.new(params[:comment])
-    @comment.author = @author
     @comment.save
-    
     respond_with(@comment, respond_options)
   end
   
@@ -40,6 +36,12 @@ class CommentsController < ApplicationController
     
     def find_author
       @author = current_user
+    end
+    
+    def build_comment
+      @comment = Comment.new(params[:comment])
+      @comment.author = @author
+      @comment
     end
     
     def find_comment
