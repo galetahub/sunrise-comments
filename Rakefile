@@ -37,7 +37,7 @@ begin
     s.files =  FileList["[A-Z]*", "{app,config,lib}/**/*"]
     s.extra_rdoc_files = FileList["[A-Z]*"] - %w(Gemfile Rakefile)
     
-    s.add_dependency('sunrise', "~> #{s.version}")
+    s.add_dependency('sunrise-cms')
   end
   
   Jeweler::GemcutterTasks.new
