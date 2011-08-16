@@ -17,6 +17,6 @@ class CommentSweeper < ActionController::Caching::Sweeper
 	
 	  def expire(item=nil)
   	  expire_fragment(%r{/comments})
-	    StructureSweeper.sweep!
+	    Sunrise::Utils.clear_cache
 	  end
 end
