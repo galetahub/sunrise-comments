@@ -19,3 +19,5 @@ In generated migration add "comments_count" column for counter cache:
   class User < ActiveRecord::Base
     include Sunrise::Comments::Author
   end
+  
+Copyright (c) 2011 Aimbulance, released under the MIT license
