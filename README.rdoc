@@ -1,6 +1,14 @@
 = Sunrise Comments
 
+  Comments system module for sunrise-cms
+
 == Install
+
+  gem "sunrise-comments"
+
+  bundle install
+
+  rake sunrise_comments_engine:install:migrations
 
   rails generate sunrise:comments:install
   
@@ -20,4 +28,4 @@ In generated migration add "comments_count" column for counter cache:
     include Sunrise::Comments::Author
   end
   
-Copyright (c) 2011 Aimbulance, released under the MIT license
+Copyright (c) 2011-2012 Fodojo, released under the MIT license

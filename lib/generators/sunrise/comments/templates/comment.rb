@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  include Sunrise::Models::Comment
+  include Sunrise::Comments::Commentable
   
   attr_accessible :user_name, :user_email, :content, :is_follow
 

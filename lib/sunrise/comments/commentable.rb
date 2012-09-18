@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Sunrise
-  module Models
-    module Comment
+  module Comments
+    module Commentable
       def self.included(base)
         base.send :include, InstanceMethods
         base.send :extend, ClassMethods
